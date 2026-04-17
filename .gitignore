@@ -1,0 +1,17 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+env/
+
+# macOS
+.DS_Store
+
+# Default output folder
+pdfs/
+
+# Temporary and local report files
+*.part
+download_report.csv
