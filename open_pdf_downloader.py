@@ -60,7 +60,7 @@ logger = logging.getLogger("open_pdf_downloader")
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
-TOOL_VERSION = "1.0"
+TOOL_VERSION = "1.1"
 DEFAULT_TIMEOUT = 30
 DEFAULT_DELAY = 0.5
 DEFAULT_WORKERS = 1

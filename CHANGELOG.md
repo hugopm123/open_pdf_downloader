@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.0.1] – Fixes
+
+### Fixed
+- `UnicodeDecodeError` on CSV files with non-UTF-8 encoding (Latin-1, Windows-1252); `errors="replace"` now applied on read.
+- PDF stub detection: files smaller than 20 KB are rejected even when `%PDF-` magic bytes are present — prevents corrupt downloads from servers that return near-empty PDFs with valid headers.
+- Strict `%PDF-` magic byte validation in `download_file` and `find_pdf_from_landing_page`; `Content-Type` header alone is no longer trusted.
+- Retry adapter no longer retries DNS failures or SSL certificate errors (`connect=0`); only transient HTTP status codes and read timeouts are retried.
+- `_process_row_cli` signature restored after refactor (`outdir`, `session`, `cfg`, `skip_existing` params were inadvertently dropped).
+
+### Added
+- `authors` field in `DownloadResult` and CSV report — populated from the `Authors` column in the input CSV.
+- `--authors-column` CLI flag (default: `Authors`).
+- `app/streamlit_app.py` — browser-based UI for non-technical users: CSV upload, DOI paste, live progress table, ZIP download of PDFs, report CSV download.
+- `app/requirements_app.txt` — Streamlit dependencies.
+- JSON summary `columns` field now omits empty keys and renames citation fallback to `doi_fallback_column`.
+
+---
+
 ## [1.0.0] – 2026-04-16 — Initial Release
 
 ### Added

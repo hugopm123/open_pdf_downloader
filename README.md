@@ -16,6 +16,7 @@ Can be used as a **CLI** or imported directly as a **tool** inside agents, noteb
 - **Resilience:** HTTP adapter with automatic retries and exponential backoff on failures and rate limits.
 - **Safe writes:** Downloads to a `.part` temporary file and renames on success — no corrupt files left on disk.
 - **Agent-friendly output:** JSON summary to `stdout`; diagnostic logs to `stderr` (clean separation for pipelines).
+- **Web UI:** Streamlit interface for non-technical users — upload CSV, paste DOIs, monitor progress, download PDFs as ZIP.
 
 ## ⚡ Quick Start
 
@@ -55,7 +56,7 @@ Clone the repository and install the dependencies. A virtual environment is reco
 
 ```bash
 git clone https://github.com/pecesama/open_pdf_downloader.git
-cd open-pdf-downloader
+cd open_pdf_downloader
 pip install -r requirements.txt
 ```
 
@@ -64,6 +65,17 @@ pip install -r requirements.txt
 requests>=2.28
 urllib3>=1.26.0
 ```
+
+### Web UI (Streamlit)
+
+For non-technical users, a browser-based interface is available in the `app/` folder.
+
+```bash
+pip install -r app/requirements_app.txt
+streamlit run app/streamlit_app.py
+```
+
+Open http://localhost:8501 in your browser. No command line knowledge required.
 
 ---
 
@@ -175,6 +187,24 @@ for paper in papers:
     elif result.status == "not_found":
         flag_for_manual_review(paper)
 ```
+
+---
+
+## 🖥️ Web UI
+
+A Streamlit interface is included for researchers who prefer not to use the command line.
+
+```bash
+streamlit run app/streamlit_app.py
+```
+
+**Features:**
+- Upload a CSV or paste DOIs directly
+- Download the CSV template
+- Toggle sources on/off and configure credentials from the sidebar
+- Live progress table updates as each article is processed
+- Download the full results report as CSV
+- Download all retrieved PDFs as a single ZIP file
 
 ---
 
